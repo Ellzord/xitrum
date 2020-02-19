@@ -1,6 +1,6 @@
 organization := "tv.cntt"
 name         := "xitrum"
-version      := "3.29.1-SNAPSHOT"
+version      := "3.30.0-SNAPSHOT"
 
 // Run "sbt mima-report-binary-issues" to check for binary compatibility
 // https://github.com/typesafehub/migration-manager
@@ -9,8 +9,8 @@ version      := "3.29.1-SNAPSHOT"
 
 //------------------------------------------------------------------------------
 
-crossScalaVersions := Seq("2.12.10")
-scalaVersion       := "2.12.10"
+crossScalaVersions := Seq("2.13.1", "2.12.10")
+scalaVersion       := "2.13.1"
 
 // Akka 2.4.0+ requires Java 8
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
@@ -18,8 +18,11 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
 //------------------------------------------------------------------------------
 
+// From Scala 2.13, to compile XML syntax, the scala.xml package must be on the classpath
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
+
 // Projects using Xitrum must provide a concrete implementation of SLF4J (Logback etc.)
-libraryDependencies += "tv.cntt" %% "slf4s-api" % "1.7.25"
+libraryDependencies += "tv.cntt" %% "slf4s-api" % "1.7.30"
 
 // Netty is the core of Xitrum's HTTP(S) feature
 libraryDependencies += "io.netty" % "netty-all" % "4.1.43.Final"
@@ -46,13 +49,13 @@ libraryDependencies += "com.typesafe.akka" %% "akka-slf4j"           % "2.6.0"
 
 // For file watch
 // (akka-agent is added here, should ensure same Akka version as above)
-libraryDependencies += "com.beachape.filemanagement" %% "schwatcher" % "0.3.5"
+// libraryDependencies += "com.beachape.filemanagement" %% "schwatcher" % "0.3.5"
 
 // For scanning routes
 libraryDependencies += "tv.cntt" %% "sclasner" % "1.8.0"
 
 // For binary (de)serializing
-libraryDependencies += "com.twitter" %% "chill" % "0.9.3"
+libraryDependencies += "com.twitter" %% "chill" % "0.9.5"
 
 // For JSON (de)serializing
 libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.7"
