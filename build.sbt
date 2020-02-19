@@ -25,18 +25,18 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
 libraryDependencies += "tv.cntt" %% "slf4s-api" % "1.7.30"
 
 // Netty is the core of Xitrum's HTTP(S) feature
-libraryDependencies += "io.netty" % "netty-all" % "4.1.43.Final"
+libraryDependencies += "io.netty" % "netty-all" % "4.1.45.Final"
 
 // https://github.com/netty/netty/wiki/Native-transports
 // Only works on Linux
-libraryDependencies += "io.netty" % "netty-transport-native-epoll" % "4.1.43.Final" classifier "linux-x86_64"
+libraryDependencies += "io.netty" % "netty-transport-native-epoll" % "4.1.45.Final" classifier "linux-x86_64"
 
 // https://github.com/netty/netty/wiki/Forked-Tomcat-Native
 // https://groups.google.com/forum/#!topic/netty/oRATC6Tl0A4
 // Include all classifiers for convenience
-libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.27.Final" classifier "linux-x86_64"
-libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.27.Final" classifier "osx-x86_64"
-libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.27.Final" classifier "windows-x86_64"
+libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.29.Final" classifier "linux-x86_64"
+libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.29.Final" classifier "osx-x86_64"
+libraryDependencies += "io.netty" % "netty-tcnative" % "2.0.29.Final" classifier "windows-x86_64"
 
 // Javassist boosts Netty 4 speed
 libraryDependencies += "org.javassist" % "javassist" % "3.26.0-GA"
@@ -44,8 +44,8 @@ libraryDependencies += "org.javassist" % "javassist" % "3.26.0-GA"
 // For clustering SockJS with Akka
 // Redirect Akka log to SLF4J
 libraryDependencies += "tv.cntt"           %% "glokka"               % "2.6.0"
-libraryDependencies += "com.typesafe.akka" %% "akka-cluster-metrics" % "2.6.0"
-libraryDependencies += "com.typesafe.akka" %% "akka-slf4j"           % "2.6.0"
+libraryDependencies += "com.typesafe.akka" %% "akka-cluster-metrics" % "2.6.3"
+libraryDependencies += "com.typesafe.akka" %% "akka-slf4j"           % "2.6.3"
 
 // For file watch
 // (akka-agent is added here, should ensure same Akka version as above)
@@ -71,7 +71,7 @@ libraryDependencies += "tv.cntt" % "rhinocoffeescript" % "1.10.0"
 
 // For metrics
 libraryDependencies += "nl.grons"              %% "metrics4-scala" % "4.1.1"
-libraryDependencies += "io.dropwizard.metrics" %  "metrics-json"   % "4.1.1"
+libraryDependencies += "io.dropwizard.metrics" %  "metrics-json"   % "4.1.2"
 
 // Scala annotations (used by routes and Swagger) compiled by a newer version
 // can't be read by an older version.
@@ -94,10 +94,10 @@ libraryDependencies += "org.webjars.bower" % "d3" % "3.5.17"
 fork in Test := true
 javaOptions in Test += "-Dxitrum.mode=production"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % "test"
 
 // For integration tests when a Xitrum server is started
-libraryDependencies += "org.asynchttpclient" % "async-http-client" % "2.10.4" % "test"
+libraryDependencies += "org.asynchttpclient" % "async-http-client" % "2.10.5" % "test"
 
 // An implementation of SLF4J is needed for log in tests to be output
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
